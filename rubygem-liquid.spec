@@ -1,14 +1,14 @@
 %global gem_name liquid
 
 Name: rubygem-%{gem_name}
-Version: 3.0.0
-Release: 2%{?dist}
+Version: 3.0.1
+Release: 1%{?dist}
 Summary: A secure, non-evaling end user template engine with aesthetic markup
 Group: Development/Languages
 License: MIT and Ruby
 URL: http://www.liquidmarkup.org
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
-%if 0%{?fc19} || 0%{?fc20} || 0%{?el7}
+%if 0%{?fc20} || 0%{?el7}
 Requires: ruby(release)
 Requires: ruby(rubygems)
 %endif
@@ -18,7 +18,7 @@ BuildRequires: rubygem(minitest)
 # rubygem-spy is not yet available in Fedora.
 #BuildRequires: rubygem(spy)
 BuildArch: noarch
-%if 0%{?fc19} || 0%{?fc20} || 0%{?el7}
+%if 0%{?fc20} || 0%{?el7}
 Provides: rubygem(%{gem_name}) = %{version}
 %endif
 
@@ -89,6 +89,9 @@ popd
 %exclude %{gem_instdir}/test
 
 %changelog
+* Tue Jan 27 2015 Ken Dreyer <ktdreyer@ktdreyer.com> - 3.0.1-1
+- Update to latest upstream release (RHBZ #1186292)
+
 * Wed Jan 07 2015 Ken Dreyer <ktdreyer@ktdreyer.com> - 3.0.0-2
 - Add "Ruby" to License tag (RHBZ #1038274)
 - Create a dummy "spy/integration" lib so we can run the tests during %%check
