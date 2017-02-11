@@ -2,7 +2,7 @@
 
 Name: rubygem-%{gem_name}
 Version: 3.0.1
-Release: 4%{?dist}
+Release: 5%{?dist}
 Summary: A secure, non-evaling end user template engine with aesthetic markup
 Group: Development/Languages
 License: MIT and Ruby
@@ -93,6 +93,9 @@ popd
 %exclude %{gem_instdir}/test
 
 %changelog
+* Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Fri May 13 2016 Vít Ondruch <vondruch@redhat.com> - 3.0.1-4
 - Explicitly specify dependency on rubygem(bigdecimal).
 
