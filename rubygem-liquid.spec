@@ -1,30 +1,25 @@
 %global gem_name liquid
 
-Name: rubygem-%{gem_name}
-Version: 3.0.1
-Release: 7%{?dist}
-Summary: A secure, non-evaling end user template engine with aesthetic markup
-Group: Development/Languages
-License: MIT and Ruby
-URL: http://www.liquidmarkup.org
-Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
-%if 0%{?fc20} || 0%{?el7}
-Requires: ruby(release)
-Requires: ruby(rubygems)
-%endif
-# liquid depends on bigdecimal, make sure it is installed, when soft
-# dependencies installation is disabled and Ruby does not pull it in.
-Requires: rubygem(bigdecimal)
-BuildRequires: ruby(release)
-BuildRequires: rubygems-devel
-BuildRequires: rubygem(bigdecimal)
-BuildRequires: rubygem(minitest)
-# rubygem-spy is not yet available in Fedora.
-#BuildRequires: rubygem(spy)
-BuildArch: noarch
-%if 0%{?fc20} || 0%{?el7}
-Provides: rubygem(%{gem_name}) = %{version}
-%endif
+Name:           rubygem-%{gem_name}
+Summary:        Secure, non-evaling end user template engine
+Version:        4.0.0
+Release:        1%{?dist}
+License:        MIT
+
+URL:            http://www.liquidmarkup.org
+Source0:        https://rubygems.org/gems/%{gem_name}-%{version}.gem
+
+BuildArch:      noarch
+
+BuildRequires:  ruby >= 2.1.0
+BuildRequires:  rubygems-devel >= 1.3.7
+
+BuildRequires:  ruby(release)
+BuildRequires:  rubygem(bigdecimal)
+BuildRequires:  rubygem(minitest)
+BuildRequires:  rubygem(spy)
+
+Requires:       rubygem(bigdecimal)
 
 %description
 Liquid is a template engine which was written with very specific requirements:
@@ -38,61 +33,60 @@ Liquid is a template engine which was written with very specific requirements:
   just render it passing in a hash with local variables and objects.
 
 
-%package doc
-Summary: Documentation for %{name}
-Group: Documentation
-Requires: %{name} = %{version}-%{release}
-BuildArch: noarch
+%package        doc
+Summary:        Documentation for %{name}
+Requires:       %{name} = %{version}-%{release}
+BuildArch:      noarch
 
-%description doc
-Documentation for %{name}
+%description    doc
+Documentation for %{name}.
+
 
 %prep
-gem unpack %{SOURCE0}
+%setup -q -n %{gem_name}-%{version}
 
-%setup -q -D -T -n  %{gem_name}-%{version}
-
-gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 
 %build
-# Create the gem as gem install only works on a gem file
-gem build %{gem_name}.gemspec
+gem build ../%{gem_name}-%{version}.gemspec
 
 %gem_install
 
+
 %install
 mkdir -p %{buildroot}%{gem_dir}
-cp -pa .%{gem_dir}/* \
-        %{buildroot}%{gem_dir}/
+cp -a ./%{gem_dir}/* %{buildroot}%{gem_dir}/
+
 
 %check
 pushd .%{gem_instdir}
-  # rubygem-spy is not yet available in Fedora.
-  # Add a dummy "spy/integration" until the real package is available.
-  mkdir spy
-  touch spy/integration.rb
-  # Run the tests, excluding the ones that require a real spy library
-  ruby -I"lib:.:test" -e 'Dir.glob("./test/**/*_test.rb").each{|f| require f unless /context_unit_test/ =~ f }'
-  # Clean up the dummy spy lib
-  rm -r spy
+ruby -I"lib:test" -e 'Dir.glob "./test/**/*_test.rb", &method(:require)'
 popd
 
 
 %files
-%{!?_licensedir:%global license %%doc}
+%license %{gem_instdir}/LICENSE
+
 %dir %{gem_instdir}
-%license %{gem_instdir}/MIT-LICENSE
-%doc %{gem_instdir}/README.md
 %{gem_libdir}
-%exclude %{gem_cache}
 %{gem_spec}
 
+%exclude %{gem_cache}
+
+
 %files doc
-%doc %{gem_docdir}
 %doc %{gem_instdir}/History.md
-%exclude %{gem_instdir}/test
+%doc %{gem_instdir}/README.md
+
+%doc %{gem_docdir}
+
+%{gem_instdir}/test
+
 
 %changelog
+* Mon May 07 2018 Fabio Valentini <decathorpe@gmail.com> - 4.0.0-1
+- Update to version 4.0.0.
+- Add BR: rubygem(spy) and run the test suite.
+
 * Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.1-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
@@ -127,3 +121,4 @@ popd
 
 * Wed Dec 04 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 2.6.0-1
 - Initial package
+
