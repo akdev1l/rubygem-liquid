@@ -3,7 +3,7 @@
 Name:           rubygem-%{gem_name}
 Summary:        Secure, non-evaling end user template engine
 Version:        4.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 
 URL:            http://www.liquidmarkup.org
@@ -83,6 +83,9 @@ popd
 
 
 %changelog
+* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Mon May 07 2018 Fabio Valentini <decathorpe@gmail.com> - 4.0.0-1
 - Update to version 4.0.0.
 - Add BR: rubygem(spy) and run the test suite.
