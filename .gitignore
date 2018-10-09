@@ -1,3 +1,7 @@
+/results_*
+/*.src.rpm
+
 /liquid-3.0.0.gem
 /liquid-3.0.1.gem
 /liquid-4.0.0.gem
+/liquid-4.0.1.gem
