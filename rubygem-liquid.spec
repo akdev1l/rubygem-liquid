@@ -2,15 +2,18 @@
 
 Name:           rubygem-%{gem_name}
 Summary:        Secure, non-evaling end user template engine
-Version:        4.0.1
-Release:        2%{?dist}
+Version:        4.0.2
+Release:        1%{?dist}
 License:        MIT
 
 URL:            http://www.liquidmarkup.org
 Source0:        https://rubygems.org/gems/%{gem_name}-%{version}.gem
 
-# Add a patch to disable running a stack profiler during unit tests
-Patch0:         00-test-unit-context-disable-stack-profiler.patch
+# Disable running stack profiler in the test suite
+Patch1:         01-test-unit-context-disable-stack-profiler.patch
+
+# Remove shebang and executable bit from the test_helper.rb
+Patch2:         02-test-helper-remove-shebang-and-executable-bit.patch
 
 BuildArch:      noarch
 
@@ -47,7 +50,8 @@ Documentation for %{name}.
 %prep
 %setup -q -n %{gem_name}-%{version}
 
-%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 
 %build
@@ -87,6 +91,9 @@ popd
 
 
 %changelog
+* Sat Mar 09 2019 Fabio Valentini <decathorpe@gmail.com> - 4.0.2-1
+- Update to version 4.0.2.
+
 * Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
