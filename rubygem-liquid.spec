@@ -2,7 +2,7 @@
 
 Name:           rubygem-%{gem_name}
 Summary:        Secure, non-evaling end user template engine
-Version:        4.0.2
+Version:        4.0.3
 Release:        1%{?dist}
 License:        MIT
 
@@ -91,6 +91,9 @@ popd
 
 
 %changelog
+* Tue Mar 12 2019 Fabio Valentini <decathorpe@gmail.com> - 4.0.3-1
+- Update to version 4.0.3.
+
 * Sat Mar 09 2019 Fabio Valentini <decathorpe@gmail.com> - 4.0.2-1
 - Update to version 4.0.2.
 

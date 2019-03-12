@@ -1,4 +1,4 @@
-From 65cad2e475f218fea2223381b60b3fd72e0fe6a0 Mon Sep 17 00:00:00 2001
+From cc54e7dff9aa2a20be632f450db8ae3c31046edf Mon Sep 17 00:00:00 2001
 From: Fabio Valentini <decathorpe@gmail.com>
 Date: Sat, 9 Mar 2019 20:38:31 +0100
 Subject: [PATCH 1/2] test/unit/context: disable stack profiler
