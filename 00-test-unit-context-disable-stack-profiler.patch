@@ -1,7 +1,7 @@
 From cc54e7dff9aa2a20be632f450db8ae3c31046edf Mon Sep 17 00:00:00 2001
 From: Fabio Valentini <decathorpe@gmail.com>
 Date: Sat, 9 Mar 2019 20:38:31 +0100
-Subject: [PATCH 1/2] test/unit/context: disable stack profiler
+Subject: [PATCH 0/2] test/unit/context: disable stack profiler
 
 ---
  test/unit/context_unit_test.rb | 32 ++++++++++++++++----------------
@@ -56,5 +56,5 @@ index fab19b8..1d59a31 100644
 +#  end
  end # ContextTest
 -- 
-2.20.1
+2.24.1
 
