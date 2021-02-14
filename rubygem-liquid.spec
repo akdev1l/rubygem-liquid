@@ -3,7 +3,7 @@
 Name:           rubygem-%{gem_name}
 Summary:        Secure, non-evaling end user template engine
 Version:        4.0.3
-Release:        6%{?dist}
+Release:        7%{?dist}
 License:        MIT
 
 URL:            http://www.liquidmarkup.org
@@ -17,6 +17,11 @@ Patch1:         01-test-helper-remove-shebang-and-executable-bit.patch
 
 # Disable two tests that are broken with ruby 2.7
 Patch2:         02-tests-integration-drop_test-disable-tests-broken-wit.patch
+
+# Fix parse_tree_visitor_test.rb for Ruby 3. Upstream has this for liquid 5.0.0,
+# patch can be removed when updated to 5.0.0 in Fedora.
+# https://github.com/Shopify/liquid/commit/81149344a5ba53b30e8ab7d77d605dc484a0a3ff
+Patch3:         03-fix-parse-tree-visitor-test-for-ruby-3.patch
 
 BuildArch:      noarch
 
@@ -51,11 +56,7 @@ Documentation for %{name}.
 
 
 %prep
-%setup -q -n %{gem_name}-%{version}
-
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{gem_name}-%{version}
 
 
 %build
@@ -95,6 +96,9 @@ popd
 
 
 %changelog
+* Sun Feb 14 2021 Otto Urpelainen <oturpe@iki.fi> - 4.0.3-7
+- Apply test suite Ruby 3.0 compatibility patch
+
 * Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.3-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
