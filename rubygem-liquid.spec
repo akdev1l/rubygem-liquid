@@ -3,7 +3,7 @@
 Name:           rubygem-%{gem_name}
 Summary:        Secure, non-evaling end user template engine
 Version:        4.0.3
-Release:        7%{?dist}
+Release:        8%{?dist}
 License:        MIT
 
 URL:            http://www.liquidmarkup.org
@@ -96,6 +96,10 @@ popd
 
 
 %changelog
+* Tue Jul 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.3-8
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Sun Feb 14 2021 Otto Urpelainen <oturpe@iki.fi> - 4.0.3-7
 - Apply test suite Ruby 3.0 compatibility patch
 
