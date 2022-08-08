@@ -3,7 +3,7 @@
 Name:           rubygem-%{gem_name}
 Summary:        Secure, non-evaling end user template engine
 Version:        4.0.3
-Release:        10%{?dist}
+Release:        %autorelease
 License:        MIT
 
 URL:            http://www.liquidmarkup.org
@@ -96,85 +96,4 @@ popd
 
 
 %changelog
-* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.3-10
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
-
-* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.3-9
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
-
-* Tue Jul 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.3-8
-- Second attempt - Rebuilt for
-  https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
-* Sun Feb 14 2021 Otto Urpelainen <oturpe@iki.fi> - 4.0.3-7
-- Apply test suite Ruby 3.0 compatibility patch
-
-* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.3-6
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
-
-* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.3-5
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
-
-* Fri Jan 31 2020 Fabio Valentini <decathorpe@gmail.com> - 4.0.3-4
-- Disable two tests that are broken with ruby 2.7.
-
-* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.3-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
-
-* Fri Jul 26 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.3-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
-
-* Tue Mar 12 2019 Fabio Valentini <decathorpe@gmail.com> - 4.0.3-1
-- Update to version 4.0.3.
-
-* Sat Mar 09 2019 Fabio Valentini <decathorpe@gmail.com> - 4.0.2-1
-- Update to version 4.0.2.
-
-* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.1-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
-
-* Tue Oct 09 2018 Fabio Valentini <decathorpe@gmail.com> - 4.0.1-1
-- Update to version 4.0.1.
-
-* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
-
-* Mon May 07 2018 Fabio Valentini <decathorpe@gmail.com> - 4.0.0-1
-- Update to version 4.0.0.
-- Add BR: rubygem(spy) and run the test suite.
-
-* Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.1-7
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
-
-* Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.1-6
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
-
-* Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.1-5
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
-
-* Fri May 13 2016 Vít Ondruch <vondruch@redhat.com> - 3.0.1-4
-- Explicitly specify dependency on rubygem(bigdecimal).
-
-* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.1-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
-
-* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.0.1-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
-
-* Tue Jan 27 2015 Ken Dreyer <ktdreyer@ktdreyer.com> - 3.0.1-1
-- Update to latest upstream release (RHBZ #1186292)
-
-* Wed Jan 07 2015 Ken Dreyer <ktdreyer@ktdreyer.com> - 3.0.0-2
-- Add "Ruby" to License tag (RHBZ #1038274)
-- Create a dummy "spy/integration" lib so we can run the tests during %%check
-  (RHBZ #1038274)
-
-* Wed Dec 10 2014 Ken Dreyer <ktdreyer@ktdreyer.com> - 3.0.0-1
-- Update to latest upstream release
-- Adjustments for https://fedoraproject.org/wiki/Changes/Ruby_2.1
-- Use %%license tag
-- Unconditionally pass tests until rubygem-spy is available
-
-* Wed Dec 04 2013 Ken Dreyer <ktdreyer@ktdreyer.com> - 2.6.0-1
-- Initial package
-
+%autochangelog
