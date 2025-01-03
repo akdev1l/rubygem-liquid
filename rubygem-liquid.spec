@@ -2,7 +2,7 @@
 
 Name:           rubygem-%{gem_name}
 Summary:        Secure, non-evaling end user template engine
-Version:        4.0.3
+Version:        4.0.4
 Release:        %autorelease
 License:        MIT
 
@@ -11,15 +11,6 @@ Source0:        https://rubygems.org/gems/%{gem_name}-%{version}.gem
 
 Patch:          00-test-unit-context-disable-stack-profiler.patch
 Patch:          01-test-helper-remove-shebang-and-executable-bit.patch
-# Disable two tests that are broken with ruby 2.7
-Patch:          02-tests-integration-drop_test-disable-tests-broken-wit.patch
-# Fix parse_tree_visitor_test.rb for Ruby 3. Upstream has this for liquid 5.0.0,
-# patch can be removed when updated to 5.0.0 in Fedora.
-# https://github.com/Shopify/liquid/commit/81149344a5ba53b30e8ab7d77d605dc484a0a3ff
-Patch:          03-fix-parse-tree-visitor-test-for-ruby-3.patch
-# Patch for supporting ruby 3.2, ruby3.2 removes "tainted"ness completely
-# Partially backported from https://github.com/Shopify/liquid/commit/065ccbc4aa5b4955dae9743509907bd9ad0db0b9
-Patch:          04-ruby32-remove-tainted.patch
 # 2 patches related to glibc 2.38.9000-20 qsort behavior change
 # Extracted from https://github.com/Shopify/liquid/pull/1476 :
 # applying only the part needed for the above glibc qsort change

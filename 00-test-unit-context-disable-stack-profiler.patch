@@ -1,26 +1,25 @@
-From cc54e7dff9aa2a20be632f450db8ae3c31046edf Mon Sep 17 00:00:00 2001
+From 8e6e8d1ab24bb42d87f4b5493be10d42ce679db3 Mon Sep 17 00:00:00 2001
 From: Fabio Valentini <decathorpe@gmail.com>
 Date: Sat, 9 Mar 2019 20:38:31 +0100
-Subject: [PATCH 0/2] test/unit/context: disable stack profiler
+Subject: [PATCH] test/unit/context: disable stack profiler
 
----
- test/unit/context_unit_test.rb | 32 ++++++++++++++++----------------
- 1 file changed, 16 insertions(+), 16 deletions(-)
 
 diff --git a/test/unit/context_unit_test.rb b/test/unit/context_unit_test.rb
-index fab19b8..1d59a31 100644
+index d9bfedb1..2ba51c65 100644
 --- a/test/unit/context_unit_test.rb
 +++ b/test/unit/context_unit_test.rb
-@@ -446,11 +446,11 @@ class ContextUnitTest < Minitest::Test
+@@ -446,12 +446,12 @@ class ContextUnitTest < Minitest::Test
      assert_equal @context, @context['category'].context
    end
  
 -  def test_interrupt_avoids_object_allocations
+-    @context.interrupt? # ruby 3.0.0 allocates on the first call
 -    assert_no_object_allocations do
 -      @context.interrupt?
 -    end
 -  end
 +  # def test_interrupt_avoids_object_allocations
++  #   @context.interrupt? # ruby 3.0.0 allocates on the first call
 +  #   assert_no_object_allocations do
 +  #     @context.interrupt?
 +  #   end
@@ -28,7 +27,7 @@ index fab19b8..1d59a31 100644
  
    def test_context_initialization_with_a_proc_in_environment
      contx = Context.new([test: ->(c) { c['poutine'] }], { test: :foo })
-@@ -475,15 +475,15 @@ class ContextUnitTest < Minitest::Test
+@@ -476,15 +476,15 @@ class ContextUnitTest < Minitest::Test
  
    private
  
@@ -56,5 +55,5 @@ index fab19b8..1d59a31 100644
 +#  end
  end # ContextTest
 -- 
-2.24.1
+2.47.1
 
